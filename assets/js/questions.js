@@ -10,17 +10,17 @@ var questions = [
       answer: "answer from choices"
     },
     {
-        title: "Example Question 2:",
+        title: "Example Question 3:",
         choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
         answer: "answer from choices"
     },
     {
-        title: "Example Question 2:",
+        title: "Example Question 4:",
         choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
         answer: "answer from choices"
     },
     {
-        title: "Example Question 2:",
+        title: "Example Question 5:",
         choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
         answer: "answer from choices"
     }
