@@ -85,7 +85,7 @@ function checkAnswer(event) {
     } else {
         console.log("Incorrect");
     }
-    // rincrease the score
+    // increase the score
     index++
     // Call function to go next question 
     nextQuestion();
