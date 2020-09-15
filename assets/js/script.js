@@ -102,8 +102,29 @@ function checkAnswer(event) {
 
 }
 
-function init() {
-    var highScore = JSON.parse(localStorage.getItem("todos"))
+function endGame() {
+    if (timer < 0) {
+        score = 0
+    }
+    else {
+        score = timer;
+    }
+    // timer hits or no questions go to end page
+    timerEl.style.display = "none";
+    var buttonDiv = document.querySelector(".buttonDiv");
+    buttonDiv.innerHTML = "";
+    
+}
+
+
+
+
+
+
+
+
+
+    var highScore = JSON.parse(localStorage.getItem("High Score"))
     // Write code here to check if there are todos in localStorage
     // If so, parse the value from localStorage and assign it to the todos variable
     if (storedTodos !== null) {
