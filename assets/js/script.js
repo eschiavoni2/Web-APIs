@@ -11,6 +11,8 @@ var index = 0;
 var questionTimer;
 var score = 0;
 var highscores = score;
+var title = "";
+
 // var initialForm = document.createElement(“form”);
 // var form = document.createElement(“input”);
 
@@ -101,8 +103,7 @@ function checkAnswer(event) {
         nextQuestion();
     }
     // Call function to go next question 
-    nextQuestion();
-
+    init();
 }
 
 
