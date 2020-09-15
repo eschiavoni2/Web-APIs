@@ -9,6 +9,7 @@ var startBtn = document.createElement("button");
 var timer = 75;
 var index = 0;
 var questionTimer;
+var score = 0;
 
 // function that loads content when the page first loads
 function openingPage() {
@@ -29,11 +30,11 @@ function startQuiz() {
 }
 
 // Function that handles the timer
-function showTimer(){
+function showTimer() {
     // display timer to screen
     timerEl.textContent = timer;
     // create setInterval and store it to variable
-    questionTimer = setInterval(function(){
+    questionTimer = setInterval(function () {
         // decrease timer by 1
         timer--
         // display timer screen
@@ -68,7 +69,7 @@ function nextQuestion() {
         // add text to each button from question choicies
         choiceBtn.addEventListener("click", checkAnswer);
         // append buttons to the div element created to wrap choices
-        choicesContainer.append(choiceBtn);            
+        choicesContainer.append(choiceBtn);
     }
     // append div element to the question container element
     displayQuestionEl.append(choicesContainer);
@@ -82,41 +83,42 @@ function checkAnswer(event) {
     // create if === then correct
     if (responseText === questions[index].answer) {
         console.log("Correct");
-    // create else != then incorrect
+        // create else != then incorrect
     } else {
         console.log("Incorrect", timer = timer - 15);
     }
     // increase the score
     index++
     // check and see if questions index is undefined, if it is clear timer and show the score
-    if (questions[index] === 5 ) {
-    clearInterval(questionTimer);
+
+    if (index >= questions.length) {
+        clearInterval(questionTimer);
     }
     else {
         nextQuestion();
     }
     // Call function to go next question 
     nextQuestion();
-    
+
 }
 
-// function init() {
-//     var highScore = JSON.parse(localStorage.getItem("todos"))
-//     // Write code here to check if there are todos in localStorage
-//     // If so, parse the value from localStorage and assign it to the todos variable
-//     if (storedTodos !== null) {
-//       todos = storedTodos
-//     }
-//     // Render todos to the DOM
-//     renderTodos();
-//   }
-  
-//   function storeTodos() {
-//     // Add code here to stringify the todos array and save it to the "todos" key in localStorage
-//     localStorage.setItem("todos", JSON.stringify(todos))
-//   }
+function init() {
+    var highScore = JSON.parse(localStorage.getItem("todos"))
+    // Write code here to check if there are todos in localStorage
+    // If so, parse the value from localStorage and assign it to the todos variable
+    if (storedTodos !== null) {
+      todos = storedTodos
+    }
+    // Render todos to the DOM
+    renderTodos();
+  }
 
-resultsEl.innerHTML = timer + ' out of ' + timer;
+  function storeTodos() {
+    // Add code here to stringify the todos array and save it to the "todos" key in localStorage
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }
+
+timer.innerHTML = timer + ' out of ' + timer;
 
 // Add event listener to start quiz
 startBtn.addEventListener("click", startQuiz)
