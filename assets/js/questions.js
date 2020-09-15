@@ -1,27 +1,27 @@
 var questions = [
     {
-      title: "Example Question 1:",
-      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-      answer: "answer from choices"
+        title: "What is the fastest speed a peregrine falcon has ever been clocked at?:",
+        choices: ["200 mph", "242 mph", "120 mph", "175 mph"],
+        answer: "242 mph"
     },
     {
-      title: "Example Question 2:",
-      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-      answer: "answer from choices"
+        title: "How can some frogs survive the winter?:",
+        choices: ["Glucose and Glycogen", "Anti-freeze", "Superpowers", "Sweaters"],
+        answer: "Glucose and Glycogen"
     },
     {
-        title: "Example Question 3:",
-        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        answer: "answer from choices"
+        title: "What is the word for sleeping reptiles?:",
+        choices: ["Hibernation", "Hibernaculum", "Brumation", "All of the above"],
+        answer: "Brumation"
     },
     {
-        title: "Example Question 4:",
-        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        answer: "answer from choices"
+        title: "Which bird of prey makes the infamous bald eagle sounds in movies?:",
+        choices: ["Bald Eagle", "Red-Tailed Hawk", "Peregrine Falcon", "Screech Owl"],
+        answer: "Red-Tailed Hawk"
     },
     {
-        title: "Example Question 5:",
-        choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
-        answer: "answer from choices"
+        title: "Which animal has a corkscrew penis?:",
+        choices: ["Dogs", "Cats", "Sugar Gliders", "Ducks"],
+        answer: "Ducks"
     }
-  ];
+];

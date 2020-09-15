@@ -83,7 +83,7 @@ function checkAnswer(event) {
         console.log("Correct");
     // create else != then incorrect
     } else {
-        console.log("Incorrect");
+        console.log("Incorrect", timer = timer - 10);
     }
     // increase the score
     index++
