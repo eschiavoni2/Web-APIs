@@ -8,8 +8,9 @@ var mainDisplay = document.createElement("h3");
 var startBtn = document.createElement("button");
 var timer = 75;
 var index = 0;
+var questionTimer;
 
-// function that lods content when the page first loads
+// function that loads content when the page first loads
 function openingPage() {
     // add text to h3 element
     mainDisplay.textContent = "Press the button to start"
@@ -32,7 +33,7 @@ function showTimer(){
     // display timer to screen
     timerEl.textContent = timer;
     // create setInterval and store it to variable
-    var questionTimer = setInterval(function(){
+    questionTimer = setInterval(function(){
         // decrease timer by 1
         timer--
         // display timer screen
@@ -83,13 +84,34 @@ function checkAnswer(event) {
         console.log("Correct");
     // create else != then incorrect
     } else {
-        console.log("Incorrect", timer = timer - 10);
+        console.log("Incorrect", timer = timer - 15);
     }
     // increase the score
     index++
+    // check and see if questions index is undefined, if it is clear timer and show the score
+    clearInterval(questionTimer);
     // Call function to go next question 
     nextQuestion();
+    
 }
+
+function init() {
+    var storedTodos = JSON.parse(localStorage.getItem("todos"))
+    // Write code here to check if there are todos in localStorage
+    // If so, parse the value from localStorage and assign it to the todos variable
+    if (storedTodos !== null) {
+      todos = storedTodos
+    }
+    // Render todos to the DOM
+    renderTodos();
+  }
+  
+  function storeTodos() {
+    // Add code here to stringify the todos array and save it to the "todos" key in localStorage
+    localStorage.setItem("todos", JSON.stringify(todos))
+  }
+
+resultsEl.innerHTML = timer + ' out of ' + timer;
 
 // Add event listener to start quiz
 startBtn.addEventListener("click", startQuiz)
