@@ -89,27 +89,32 @@ function checkAnswer(event) {
     // increase the score
     index++
     // check and see if questions index is undefined, if it is clear timer and show the score
+    if (questions[index] === 5 ) {
     clearInterval(questionTimer);
+    }
+    else {
+        nextQuestion();
+    }
     // Call function to go next question 
     nextQuestion();
     
 }
 
-function init() {
-    var storedTodos = JSON.parse(localStorage.getItem("todos"))
-    // Write code here to check if there are todos in localStorage
-    // If so, parse the value from localStorage and assign it to the todos variable
-    if (storedTodos !== null) {
-      todos = storedTodos
-    }
-    // Render todos to the DOM
-    renderTodos();
-  }
+// function init() {
+//     var highScore = JSON.parse(localStorage.getItem("todos"))
+//     // Write code here to check if there are todos in localStorage
+//     // If so, parse the value from localStorage and assign it to the todos variable
+//     if (storedTodos !== null) {
+//       todos = storedTodos
+//     }
+//     // Render todos to the DOM
+//     renderTodos();
+//   }
   
-  function storeTodos() {
-    // Add code here to stringify the todos array and save it to the "todos" key in localStorage
-    localStorage.setItem("todos", JSON.stringify(todos))
-  }
+//   function storeTodos() {
+//     // Add code here to stringify the todos array and save it to the "todos" key in localStorage
+//     localStorage.setItem("todos", JSON.stringify(todos))
+//   }
 
 resultsEl.innerHTML = timer + ' out of ' + timer;
 
