@@ -10,6 +10,9 @@ var timer = 75;
 var index = 0;
 var questionTimer;
 var score = 0;
+var highscores = score;
+// var initialForm = document.createElement(“form”);
+// var form = document.createElement(“input”);
 
 // function that loads content when the page first loads
 function openingPage() {
@@ -102,45 +105,18 @@ function checkAnswer(event) {
 
 }
 
-function endGame() {
-    if (timer < 0) {
-        score = 0
+
+function init() {
+    // Checking for high scores in local storage then parsing value from local storage
+    let storedScore = JSON.parse(localStorage.getItem("highscores"));
+    if (storedScore !== null) {
+        highscores = storedScore;
     }
-    else {
-        score = timer;
-    }
-    // timer hits or no questions go to end page
-    timerEl.style.display = "none";
-    var buttonDiv = document.querySelector(".buttonDiv");
-    buttonDiv.innerHTML = "";
-    
 }
 
-
-
-
-
-
-
-
-
-    var highScore = JSON.parse(localStorage.getItem("High Score"))
-    // Write code here to check if there are todos in localStorage
-    // If so, parse the value from localStorage and assign it to the todos variable
-    if (storedTodos !== null) {
-      todos = storedTodos
-    }
-    // Render todos to the DOM
-    renderTodos();
-  }
-
-  function storeTodos() {
-    // Add code here to stringify the todos array and save it to the "todos" key in localStorage
-    localStorage.setItem("todos", JSON.stringify(todos))
-  }
-
-timer.innerHTML = timer + ' out of ' + timer;
-
+function storedScore() {
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+}
 // Add event listener to start quiz
 startBtn.addEventListener("click", startQuiz)
 
