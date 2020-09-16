@@ -111,11 +111,13 @@ function init() {
     // Checking for high scores in local storage then parsing value from local storage
     let storedScore = JSON.parse(localStorage.getItem("highscores"));
     if (storedScore !== null) {
+        // reassign array to stored value
         highscores = storedScore;
     }
 }
-
+// storing score in local function
 function storedScore() {
+    // save highscore to local storage by stringify array
     localStorage.setItem("highscores", JSON.stringify(highscores));
 }
 // Add event listener to start quiz
