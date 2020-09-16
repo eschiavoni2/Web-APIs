@@ -1,25 +1,21 @@
+
 var highscoresList = document.querySelector("#highscores-list");
-var highscores;
 
-function getHighscores(){
-    // go and get high scores from localstorage or empty array
-    highscores = JSON.parse(localStorage.getItem("highscores")) || [];
-}
+// render highscores function
 function renderHighscores() {
-    highscoresList.innerHTML = highscores;
-    for (var index = 0; index < highscoresList; index++) {
+    // checking local storage for high scores or empty array
+    var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+    console.log(highscores)
+    // for loop for high scores
+    for (var index = 0; index < highscores.length; index++) {
         var highscore = highscores[index];
-
+        // creating a list with high scores 
         var li = document.createElement("li");
-        li.textContent = highscore;
+        li.textContent = highscore.initials + " - " + highscore.score;
         li.setAttribute("data-index", index);
-
-        // var button = document.createElement("button");
-        // button.textContent = "Complete";
-
-        li.appendChild(button);
+        // appending the high score list
         highscoresList.appendChild(li);
     }
 }
-    // render to DOM
-    renderHighscores();
+// render to DOM
+renderHighscores();
