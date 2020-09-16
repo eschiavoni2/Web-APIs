@@ -13,8 +13,6 @@ var score = 0;
 var title = "";
 var highscoresInput = document.querySelector("#initials");
 var highscoresForm = document.querySelector("#highscores-form");
-var highscoresList = document.querySelector("#highscores-list");
-var highscoresCount = document.querySelector("#highscores-count");
 var highscores = [];
 
 // var initialForm = document.createElement(“form”);
@@ -62,26 +60,33 @@ function nextQuestion() {
     var currentQuestion = questions[index];
     // console.log current question
     console.log(currentQuestion);
-    // empty question container element;
-    displayQuestionEl.textContent = "";
-    // add current question title to main text display variable
-    mainDisplay.textContent = currentQuestion.title;
-    // append the main text display variable to the question 
-    displayQuestionEl.append(mainDisplay);
-    // create a div element to wrap the "choices"
-    var choicesContainer = document.createElement("div");
-    // use a loop to:
-    for (let index = 0; index < currentQuestion.choices.length; index++) {
-        var choiceBtn = document.createElement("button");
-        // create a button for each choice
-        choiceBtn.textContent = currentQuestion.choices[index];
-        // add text to each button from question choicies
-        choiceBtn.addEventListener("click", checkAnswer);
-        // append buttons to the div element created to wrap choices
-        choicesContainer.append(choiceBtn);
+    if (currentQuestion === undefined) {
+        // show the initials form so they can enter initials, show restart button
+        var userForm = document.getElementById("highscores-form");
+        userForm.setAttribute("style", "display: block")
+    } else {
+
+        // empty question container element;
+        displayQuestionEl.textContent = "";
+        // add current question title to main text display variable
+        mainDisplay.textContent = currentQuestion.title;
+        // append the main text display variable to the question 
+        displayQuestionEl.append(mainDisplay);
+        // create a div element to wrap the "choices"
+        var choicesContainer = document.createElement("div");
+        // use a loop to:
+        for (let index = 0; index < currentQuestion.choices.length; index++) {
+            var choiceBtn = document.createElement("button");
+            // create a button for each choice
+            choiceBtn.textContent = currentQuestion.choices[index];
+            // add text to each button from question choicies
+            choiceBtn.addEventListener("click", checkAnswer);
+            // append buttons to the div element created to wrap choices
+            choicesContainer.append(choiceBtn);
+        }
+        // append div element to the question container element
+        displayQuestionEl.append(choicesContainer);
     }
-    // append div element to the question container element
-    displayQuestionEl.append(choicesContainer);
 }
 
 // Function to check the answer and display to following question
@@ -113,14 +118,9 @@ function checkAnswer(event) {
 
 function endGame() {
 
-
-
-
-
-
 }
 // call function high score local storage
-init ();
+init();
 
 
 // function for local storage of scores
@@ -138,18 +138,18 @@ function storeHighscores() {
     // save highscore to local storage by stringify array
     localStorage.setItem("highscores", JSON.stringify(highscores));
 }
-highscoresForm.addEventListener("submit" , function(event) {
+highscoresForm.addEventListener("submit", function (event) {
     event.preventDefault();
     var userInitials = highscoresInput.value.trim();
     var userScore = timerEl.textContent
-    console.log("user", initialsInput, timerEl.textContent)
+    console.log("user", userInitials, timerEl.textContent)
 
     if (userInitials === "") {
         return;
     }
     // grabbing values when submit
     var score = {
-        initials: userInitials, 
+        initials: userInitials,
         score: userScore
     }
 
@@ -157,7 +157,6 @@ highscoresForm.addEventListener("submit" , function(event) {
     highscoresInput.value = "";
 
     storeHighscores();
-    renderHighscores();
 });
 
 // Add event listener to start quiz
