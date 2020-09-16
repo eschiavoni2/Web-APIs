@@ -3,7 +3,6 @@
 }
 
 #initials {
-    text-align: center;
 }
 h1 {
     color: blue;
@@ -13,5 +12,16 @@ h1 {
     text-align: center;
 }
 #HighScorePage {
+    padding: 10px;
+    justify-content: center;
+}
+.nav {
+    text-align: center;
+}
+a {
+    margin-left: auto;
+    margin-right: auto;
+}
+#highscores-form {
     text-align: center;
 }
