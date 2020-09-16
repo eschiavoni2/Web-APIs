@@ -138,24 +138,25 @@ function storeHighscores() {
     // save highscore to local storage by stringify array
     localStorage.setItem("highscores", JSON.stringify(highscores));
 }
+// submit button even listener - initials and score
 highscoresForm.addEventListener("submit", function (event) {
     event.preventDefault();
     var userInitials = highscoresInput.value.trim();
     var userScore = timerEl.textContent
     console.log("user", userInitials, timerEl.textContent)
-
+    // if userInitils not entered, return
     if (userInitials === "") {
         return;
     }
-    // grabbing values when submit
+    // grabbing values when submitted
     var score = {
         initials: userInitials,
         score: userScore
     }
-
+    // pushing high scores
     highscores.push(score);
     highscoresInput.value = "";
-
+    // calling store high scores
     storeHighscores();
 });
 

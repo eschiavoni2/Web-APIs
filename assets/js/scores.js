@@ -1,4 +1,4 @@
-
+// high-scores
 var highscoresList = document.querySelector("#highscores-list");
 
 // render highscores function
