@@ -12,6 +12,11 @@ var questionTimer;
 var score = 0;
 var highscores = score;
 var title = "";
+var highscoresInput = document.querySelector("#highscore-text");
+var highscoresForm = document.querySelector("#highscores-form");
+var highscoresList = document.querySelector("#highscores-list");
+var highscoresCount = document.querySelector("#highscores-count");
+var highscores = [];
 
 // var initialForm = document.createElement(“form”);
 // var form = document.createElement(“input”);
@@ -90,7 +95,8 @@ function checkAnswer(event) {
         console.log("Correct");
         // create else != then incorrect
     } else {
-        console.log("Incorrect", timer = timer - 15);
+        timer = timer - 15;
+        console.log("Incorrect");
     }
     // increase the score
     index++
@@ -100,26 +106,70 @@ function checkAnswer(event) {
         clearInterval(questionTimer);
     }
     else {
+        // Call function to go next question 
         nextQuestion();
     }
-    // Call function to go next question 
-    init();
+    nextQuestion();
 }
 
+function endGame() {
 
+
+
+
+
+
+}
+// call function high score local storage
+init ();
+
+function renderHighscores() {
+    highscoresList.innerHTML = "";
+    highscoresCount.textContent = highscores.length;
+    for (var index = 0; i < highscores.length; index++) {
+        var highscore = highscores[index];
+
+        var li = document.createElement("li");
+        li.textContent = highscore;
+        li.setAttribute("data-index", index);
+
+        var button = document.createElement("button");
+        button.textContent = "Complete";
+
+        li.appendChild(button);
+        highscoresList.appendChild(li);
+    }
+}
+// function for local storage of scores
 function init() {
     // Checking for high scores in local storage then parsing value from local storage
-    let storedScore = JSON.parse(localStorage.getItem("highscores"));
+    var storedScore = JSON.parse(localStorage.getItem("highscores"));
     if (storedScore !== null) {
         // reassign array to stored value
         highscores = storedScore;
     }
+    // render to DOM
+    renderHighscores();
 }
 // storing score in local function
-function storedScore() {
+function storeHighscores() {
     // save highscore to local storage by stringify array
     localStorage.setItem("highscores", JSON.stringify(highscores));
 }
+highscoresForm.addEventListener("submit" , function(event) {
+    event.preventDefault();
+    var highscoresText = highscoresInput.value.trim();
+
+    if (highscoresText === "") {
+        return;
+    }
+    highscores.push(highscoresText);
+    highscoresInput.value = "";
+
+    storeHighscores();
+    renderHighscores();
+});
+
 // Add event listener to start quiz
 startBtn.addEventListener("click", startQuiz)
 
