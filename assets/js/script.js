@@ -10,9 +10,8 @@ var timer = 75;
 var index = 0;
 var questionTimer;
 var score = 0;
-var highscores = score;
 var title = "";
-var highscoresInput = document.querySelector("#highscore-text");
+var highscoresInput = document.querySelector("#initials");
 var highscoresForm = document.querySelector("#highscores-form");
 var highscoresList = document.querySelector("#highscores-list");
 var highscoresCount = document.querySelector("#highscores-count");
@@ -123,23 +122,7 @@ function endGame() {
 // call function high score local storage
 init ();
 
-function renderHighscores() {
-    highscoresList.innerHTML = "";
-    highscoresCount.textContent = highscores.length;
-    for (var index = 0; i < highscores.length; index++) {
-        var highscore = highscores[index];
 
-        var li = document.createElement("li");
-        li.textContent = highscore;
-        li.setAttribute("data-index", index);
-
-        var button = document.createElement("button");
-        button.textContent = "Complete";
-
-        li.appendChild(button);
-        highscoresList.appendChild(li);
-    }
-}
 // function for local storage of scores
 function init() {
     // Checking for high scores in local storage then parsing value from local storage
@@ -148,8 +131,7 @@ function init() {
         // reassign array to stored value
         highscores = storedScore;
     }
-    // render to DOM
-    renderHighscores();
+
 }
 // storing score in local function
 function storeHighscores() {
@@ -158,12 +140,20 @@ function storeHighscores() {
 }
 highscoresForm.addEventListener("submit" , function(event) {
     event.preventDefault();
-    var highscoresText = highscoresInput.value.trim();
+    var userInitials = highscoresInput.value.trim();
+    var userScore = timerEl.textContent
+    console.log("user", initialsInput, timerEl.textContent)
 
-    if (highscoresText === "") {
+    if (userInitials === "") {
         return;
     }
-    highscores.push(highscoresText);
+    // grabbing values when submit
+    var score = {
+        initials: userInitials, 
+        score: userScore
+    }
+
+    highscores.push(score);
     highscoresInput.value = "";
 
     storeHighscores();
