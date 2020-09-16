@@ -26,6 +26,7 @@ function openingPage() {
     startBtn.textContent = "Start"
     // append text and button to question container
     displayQuestionEl.append(mainDisplay, startBtn)
+    startBtn.setAttribute("style", "background-color: indigo; color: white; border-radius: 5px;")
 }
 
 // function that shows the question and starts the timer
@@ -83,6 +84,8 @@ function nextQuestion() {
             choiceBtn.addEventListener("click", checkAnswer);
             // append buttons to the div element created to wrap choices
             choicesContainer.append(choiceBtn);
+            choiceBtn.setAttribute("style", "background-color: indigo; color: white; border-radius: 5px;")
+
         }
         // append div element to the question container element
         displayQuestionEl.append(choicesContainer);
