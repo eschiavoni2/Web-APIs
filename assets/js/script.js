@@ -13,7 +13,7 @@ var score = 0;
 var title = "";
 var highscoresInput = document.querySelector("#initials");
 var highscoresForm = document.querySelector("#highscores-form");
-var highscores = "";
+var highscores = [];
 
 // var initialForm = document.createElement(“form”);
 // var form = document.createElement(“input”);
